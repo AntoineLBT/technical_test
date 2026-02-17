@@ -4,6 +4,7 @@ import httpx
 from fastapi import FastAPI
 
 from app.database import create_pool, run_migrations
+from app.exceptions.handlers import register_exception_handlers
 
 
 @asynccontextmanager
@@ -27,6 +28,7 @@ def create_app() -> FastAPI:
         version="0.1.0",
         lifespan=lifespan,
     )
+    register_exception_handlers(app)
     return app
 
 
