@@ -2,14 +2,19 @@ FROM python:3.12-slim
 
 WORKDIR /app
 
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    gcc \
-    libpq-dev \
-    && rm -rf /var/lib/apt/lists/*
+COPY --from=ghcr.io/astral-sh/uv:latest /uv /uvx /usr/local/bin/
 
-COPY pyproject.toml .
-RUN pip install --no-cache-dir ".[test]"
+# Whether to include dev dependencies (pytest etc.) — set to "true" for test image
+ARG INSTALL_DEV=false
+
+# Install dependencies from the lockfile (copy manifests first for layer caching)
+COPY pyproject.toml uv.lock ./
+RUN if [ "$INSTALL_DEV" = "true" ]; then \
+      uv sync --frozen; \
+    else \
+      uv sync --frozen --no-dev; \
+    fi
 
 COPY . .
 
-CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+CMD ["uv", "run", "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
