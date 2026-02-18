@@ -16,9 +16,9 @@ Technical test for Dailymotion — user registration API with email verification
 | 4 | `feat: add PostgreSQL migration runner and asyncpg pool lifespan` | ✅ Done |
 | 5 | `chore: switch to uv for dependency management` | ✅ Done |
 | 6 | `feat: add Pydantic v2 schemas and custom exception handlers` | ✅ Done |
-| 7 | `feat: implement UserRepository and CodeRepository (raw SQL)` | 🔲 Next |
-| 8 | `feat: implement EmailService with aiosmtplib to Mailhog` | 🔲 Todo |
-| 9 | `feat: implement UserService (register + activate orchestration)` | 🔲 Todo |
+| 7 | `feat: implement UserRepository and CodeRepository (raw SQL)` | ✅ Done |
+| 8 | `feat: implement EmailService with aiosmtplib to Mailhog` | ✅ Done |
+| 9 | `feat: implement UserService (register + activate orchestration)` | 🔲 Next |
 | 10 | `feat: add /users and /users/activate router with HTTPBasic and Depends` | 🔲 Todo |
 | 11 | `test: add pytest fixtures with test DB isolation and AsyncClient` | 🔲 Todo |
 | 12 | `test: add registration and activation test cases` | 🔲 Todo |
