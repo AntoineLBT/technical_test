@@ -20,7 +20,7 @@ class InvalidCredentialsError(AppException):
 
 class InvalidCodeError(AppException):
     def __init__(self, reason: str = "Invalid or expired code") -> None:
-        super().__init__(reason, status.HTTP_422_UNPROCESSABLE_ENTITY)
+        super().__init__(reason, status.HTTP_422_UNPROCESSABLE_CONTENT)
 
 
 class UserAlreadyActiveError(AppException):
