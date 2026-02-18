@@ -5,6 +5,7 @@ from fastapi import FastAPI
 
 from app.database import create_pool, run_migrations
 from app.exceptions.handlers import register_exception_handlers
+from app.routers import users
 
 
 @asynccontextmanager
@@ -29,6 +30,7 @@ def create_app() -> FastAPI:
         lifespan=lifespan,
     )
     register_exception_handlers(app)
+    app.include_router(users.router, prefix="/users", tags=["users"])
     return app
 
 
