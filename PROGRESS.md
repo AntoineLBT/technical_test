@@ -18,8 +18,8 @@ Technical test for Dailymotion — user registration API with email verification
 | 6 | `feat: add Pydantic v2 schemas and custom exception handlers` | ✅ Done |
 | 7 | `feat: implement UserRepository and CodeRepository (raw SQL)` | ✅ Done |
 | 8 | `feat: implement EmailService with aiosmtplib to Mailhog` | ✅ Done |
-| 9 | `feat: implement UserService (register + activate orchestration)` | 🔲 Next |
-| 10 | `feat: add /users and /users/activate router with HTTPBasic and Depends` | 🔲 Todo |
+| 9 | `feat: implement UserService (register + activate orchestration)` | ✅ Done |
+| 10 | `feat: add /users and /users/activate router with HTTPBasic and Depends` | 🔲 Next |
 | 11 | `test: add pytest fixtures with test DB isolation and AsyncClient` | 🔲 Todo |
 | 12 | `test: add registration and activation test cases` | 🔲 Todo |
 | 13 | `docs: README with architecture diagram and run instructions` | 🔲 Todo |
