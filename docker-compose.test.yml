@@ -12,7 +12,7 @@ services:
         INSTALL_DEV: "true"
     environment:
       DATABASE_URL: postgresql://user:password@postgres:5432/userdb_test
-    command: uv run pytest tests/ -v --cov=app --cov-report=term-missing
+    command: uv run pytest tests/ -v --cov=app --cov-report=term-missing --cov-report=xml:/app/coverage.xml
     depends_on:
       postgres:
         condition: service_healthy

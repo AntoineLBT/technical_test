@@ -1,0 +1,39 @@
+name: Tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run tests
+        run: |
+          docker compose -f docker-compose.yml -f docker-compose.test.yml \
+            up --build --exit-code-from app --abort-on-container-exit
+
+      - name: Extract coverage report
+        if: always()
+        run: |
+          docker compose -f docker-compose.yml -f docker-compose.test.yml \
+            cp app:/app/coverage.xml coverage.xml
+
+      - name: Tear down
+        if: always()
+        run: |
+          docker compose -f docker-compose.yml -f docker-compose.test.yml \
+            down -v
+
+      - name: Upload coverage reports to Codecov
+        if: always()
+        uses: codecov/codecov-action@v5
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: coverage.xml
+          slug: AntoineLBT/technical_test
