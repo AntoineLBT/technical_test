@@ -83,6 +83,17 @@ async def test_activate_wrong_password_returns_401(
 
 
 @pytest.mark.asyncio
+async def test_activate_malformated_code_returns_422(
+    client: AsyncClient, db_pool: asyncpg.Pool
+):
+    await _register(client)
+    response = await client.post(
+        "/users/activate", json={"code": "12345"}, auth=(_EMAIL, _PASSWORD)
+    )
+    assert response.status_code == 422
+
+
+@pytest.mark.asyncio
 async def test_activate_unknown_user_returns_401(client: AsyncClient):
     response = await client.post(
         "/users/activate",

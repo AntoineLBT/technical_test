@@ -10,7 +10,7 @@ test:
 	uv sync
 	docker compose up postgres -d
 	cp .env.example .env
-	uv run pytest tests/ -v
+	uv run pytest tests/ -v --cov=app --cov-report=term-missing --cov-report=html
 
 docker-up:
 	docker compose up --build -d

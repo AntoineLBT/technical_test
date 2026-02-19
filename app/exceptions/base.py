@@ -26,3 +26,11 @@ class InvalidCodeError(AppException):
 class UserAlreadyActiveError(AppException):
     def __init__(self) -> None:
         super().__init__("Account is already active", status.HTTP_409_CONFLICT)
+
+
+class EmailDeliveryError(AppException):
+    def __init__(self) -> None:
+        super().__init__(
+            "Failed to send email, please try again later",
+            status.HTTP_503_SERVICE_UNAVAILABLE,
+        )

@@ -4,6 +4,7 @@ from email.mime.text import MIMEText
 from aiosmtplib import SMTPException, send
 
 from app.config import settings
+from app.exceptions.base import EmailDeliveryError
 
 logger = logging.getLogger(__name__)
 
@@ -37,4 +38,4 @@ class EmailService:
             logger.info("Activation code sent to %s", to_email)
         except SMTPException as exc:
             logger.error("Failed to send activation email to %s: %s", to_email, exc)
-            raise
+            raise EmailDeliveryError() from exc
