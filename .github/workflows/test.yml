@@ -29,11 +29,3 @@ jobs:
         run: |
           docker compose -f docker-compose.yml -f docker-compose.test.yml \
             down -v
-
-      - name: Upload coverage reports to Codecov
-        if: always()
-        uses: codecov/codecov-action@v5
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          files: coverage.xml
-          slug: AntoineLBT/technical_test
