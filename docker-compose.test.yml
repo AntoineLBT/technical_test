@@ -2,6 +2,8 @@ services:
   postgres:
     environment:
       POSTGRES_DB: userdb_test
+    volumes:
+      - postgres_test_data:/var/lib/postgresql/data
 
   app:
     build:
@@ -16,3 +18,6 @@ services:
         condition: service_healthy
       mailhog:
         condition: service_started
+
+volumes:
+  postgres_test_data:
