@@ -21,8 +21,8 @@ Technical test for Dailymotion — user registration API with email verification
 | 9 | `feat: implement UserService (register + activate orchestration)` | ✅ Done |
 | 10 | `feat: add /users and /users/activate router with HTTPBasic and Depends` | ✅ Done |
 | 11 | `test: add pytest fixtures with test DB isolation and AsyncClient` | ✅ Done |
-| 12 | `test: add registration and activation test cases` | 🔲 Next |
-| 13 | `docs: README with architecture diagram and run instructions` | 🔲 Todo |
+| 12 | `test: add registration and activation test cases` | ✅ Done |
+| 13 | `docs: README with architecture diagram and run instructions` | ✅ Done |
 
 ---
 
@@ -49,15 +49,15 @@ app/
 ├── dependencies.py      ✅ get_pool, get_db, get_http_client (Depends providers)
 ├── database.py          ✅ create_pool + migration runner
 ├── routers/
-│   └── users.py         🔲 POST /users, POST /users/activate
+│   └── users.py         ✅ POST /users, POST /users/activate
 ├── schemas/
 │   └── user.py          ✅ UserCreate, UserResponse, ActivateRequest, MessageResponse
 ├── services/
-│   ├── user_service.py  🔲 register() + activate() orchestration
-│   └── email_service.py 🔲 aiosmtplib → Mailhog:1025
+│   ├── user_service.py  ✅ register() + activate() orchestration
+│   └── email_service.py ✅ aiosmtplib → Mailhog:1025
 ├── repositories/
-│   ├── user_repository.py   🔲 raw SQL on users table
-│   └── code_repository.py   🔲 raw SQL on activation_codes table
+│   ├── user_repository.py   ✅ raw SQL on users table
+│   └── code_repository.py   ✅ raw SQL on activation_codes table
 └── exceptions/
     ├── base.py          ✅ AppException + domain exceptions
     └── handlers.py      ✅ register_exception_handlers(app)
@@ -66,9 +66,9 @@ migrations/
 └── 001_initial.sql      ✅ users + activation_codes tables
 
 tests/
-├── conftest.py          🔲 pool fixture, TRUNCATE per test, httpx AsyncClient
-├── test_register.py     🔲
-└── test_activate.py     🔲
+├── conftest.py          ✅ pool fixture, TRUNCATE per test, httpx AsyncClient
+├── test_register.py     ✅
+└── test_activate.py     ✅
 ```
 
 ---

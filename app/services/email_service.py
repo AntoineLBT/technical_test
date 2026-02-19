@@ -33,7 +33,7 @@ class EmailService:
                 message,
                 hostname=self._smtp_host,
                 port=self._smtp_port,
-            )
+            )  # Can be easily changed for a real third party service
             logger.info("Activation code sent to %s", to_email)
         except SMTPException as exc:
             logger.error("Failed to send activation email to %s: %s", to_email, exc)
